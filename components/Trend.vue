@@ -4,7 +4,7 @@
 
     <div class="text-2xl font-extrabold text-black dark:text-white mb-2">
       <USkeleton class="h-8 w-full" v-if="loading" />
-      <div v-else>{{ amount }}</div>
+      <div v-else>{{ currency }}</div>
     </div>
 
     <div>
@@ -31,12 +31,17 @@ const props = defineProps({
   color: String,
   loading: Boolean,
 });
+
 const trendingUp = computed(() => props.amount >= props.lastAmount);
+
 const icon = computed(() =>
   trendingUp.value
     ? "i-heroicons-arrow-trending-up"
     : "i-heroicons-arrow-trending-down"
 );
+
+const { currency } = useCurrency(props.amount);
+
 const percentageTrend = computed(() => {
   if (props.amount === 0 || props.lastAmount === 0) return "∞%";
   const bigger = Math.max(props.amount, props.lastAmount);
