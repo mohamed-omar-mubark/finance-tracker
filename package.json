@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@nuxthq/ui": "^2.7.0",
-    "@nuxtjs/supabase": "^1.1.7"
+    "@nuxtjs/supabase": "^1.1.7",
+    "zod": "^3.22.4"
   }
 }
