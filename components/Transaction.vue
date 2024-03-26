@@ -36,6 +36,8 @@ const props = defineProps({
   transaction: Object,
 });
 
+const emit = defineEmits(["deleted"]);
+
 const isIncome = computed(() => props.transaction.type === "Income");
 const icon = computed(() =>
   isIncome.value ? "i-heroicons-arrow-up-right" : "i-heroicons-arrow-down-left"
