@@ -33,7 +33,7 @@ async function seedTransactions() {
     for (let i = 0; i < 10; i++) {
       const date = new Date(
         year,
-        faker.number.int({ min: 0, max: 11 }),
+        faker.number.int({ min: 0, max: 3 }),
         faker.number.int({ min: 1, max: 28 })
       );
 
