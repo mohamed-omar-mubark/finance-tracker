@@ -6,10 +6,7 @@
         class="w-full"
         help="This would be blank by default"
       >
-        <UAvatar
-          src="https://avatars.githubusercontent.com/u/739984?v=4"
-          size="3xl"
-        />
+        <UAvatar :src="url" size="3xl" />
       </UFormGroup>
     </div>
 
@@ -41,10 +38,9 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 // We need to get the actual avatar URL
 const { toastSuccess, toastError } = useAppToast();
+const { url } = useAvatarUrl();
 const uploading = ref(false);
 const fileInput = ref(); // Reference to an input with ref="fileInput" attribute
-
-console.log(user.value);
 
 const saveAvatar = async () => {
   // 1. Get the uploaded file
@@ -55,10 +51,10 @@ const saveAvatar = async () => {
     toastError({ title: "Select a file to upload first" });
     return;
   }
-  console.log(file);
+
   const fileExt = file.name.split(".").pop();
   const fileName = `${Math.random()}.${fileExt}`;
-  console.log(fileName);
+
   try {
     uploading.value = true;
     // 1. Grab the current avatar URL
